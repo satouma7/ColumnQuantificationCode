@@ -1782,36 +1782,36 @@ for I=1:size(list,1)
     imgs(:,:,list(I,1))=FimgsA(:,:,list(I,1));
 end
 
-figure;Color={'r', 'g', 'b'};
-subplot(1,2,1);
-hold on;
-for I=1:3
-    scatter3(list(list(:,2)==I,3),list(list(:,2)==I,4),list(list(:,2)==I,5),10,Color{I});
-    text(list(list(:,2)==I,3)+0.02,list(list(:,2)==I,4)+0.01,list(list(:,2)==I,5),num2str(list(list(:,2)==I,1)),'Color',Color{I});
-end
-xlim([0 1]);ylim([0 1]);zlim([0 1]);
-set(gca,'Xdir','Normal');set(gca,'Ydir','Normal');set(gca,'Zdir','Normal');
-xlabel('Normal');ylabel('Gap');zlabel('Nohole');
-hold off;
-
-[coeff,score,latent,tsquared,explained,mu] = pca(list(:,3:5));
-N=size(score,1);
-coeff2=coeff;coeff2(3,:)=0;
-list2=list;
-list2(:,3:5)=score*coeff2'+repmat(mu,N,1);
-
-subplot(1,2,2);
-hold on;
-for I=1:3
-    scatter(list2(list2(:,2)==I,3),list2(list2(:,2)==I,4),10,Color{I});
-    text(list2(list2(:,2)==I,3)+0.02,list2(list2(:,2)==I,4)+0.01,num2str(list2(list2(:,2)==I,1)),'Color',Color{I});
-%     scatter3(list2(list2(:,2)==I,3),list2(list2(:,2)==I,4),list2(list2(:,2)==I,5),10,Color{I});
-%     text(list2(list2(:,2)==I,3)+0.02,list2(list2(:,2)==I,4)+0.01,list2(list2(:,2)==I,5),num2str(list2(list2(:,2)==I,1)),'Color',Color{I});
-end
-xlim([0 1]);ylim([0 1]);zlim([0 1]);
-set(gca,'Xdir','Normal');set(gca,'Ydir','Normal');%set(gca,'Zdir','Normal');
-xlabel('First');ylabel('Second');%zlabel('Third');
-hold off;
+% figure;Color={'r', 'g', 'b'};
+% subplot(1,2,1);
+% hold on;
+% for I=1:3
+%     scatter3(list(list(:,2)==I,3),list(list(:,2)==I,4),list(list(:,2)==I,5),10,Color{I});
+%     text(list(list(:,2)==I,3)+0.02,list(list(:,2)==I,4)+0.01,list(list(:,2)==I,5),num2str(list(list(:,2)==I,1)),'Color',Color{I});
+% end
+% xlim([0 1]);ylim([0 1]);zlim([0 1]);
+% set(gca,'Xdir','Normal');set(gca,'Ydir','Normal');set(gca,'Zdir','Normal');
+% xlabel('Normal');ylabel('Gap');zlabel('Nohole');
+% hold off;
+% 
+% [coeff,score,latent,tsquared,explained,mu] = pca(list(:,3:5));
+% N=size(score,1);
+% coeff2=coeff;coeff2(3,:)=0;
+% list2=list;
+% list2(:,3:5)=score*coeff2'+repmat(mu,N,1);
+% 
+% subplot(1,2,2);
+% hold on;
+% for I=1:3
+%     scatter(list2(list2(:,2)==I,3),list2(list2(:,2)==I,4),10,Color{I});
+%     text(list2(list2(:,2)==I,3)+0.02,list2(list2(:,2)==I,4)+0.01,num2str(list2(list2(:,2)==I,1)),'Color',Color{I});
+% %     scatter3(list2(list2(:,2)==I,3),list2(list2(:,2)==I,4),list2(list2(:,2)==I,5),10,Color{I});
+% %     text(list2(list2(:,2)==I,3)+0.02,list2(list2(:,2)==I,4)+0.01,list2(list2(:,2)==I,5),num2str(list2(list2(:,2)==I,1)),'Color',Color{I});
+% end
+% xlim([0 1]);ylim([0 1]);zlim([0 1]);
+% set(gca,'Xdir','Normal');set(gca,'Ydir','Normal');%set(gca,'Zdir','Normal');
+% xlabel('First');ylabel('Second');%zlabel('Third');
+% hold off;
 set(handles.eSVM,'Enable','on');
 
 
